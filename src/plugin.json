@@ -1,0 +1,45 @@
+{
+  "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
+  "type": "datasource",
+  "name": "flespi datasource",
+  "id": "flespisoftware-parameters-datasource",
+  "metrics": true,
+  "logs": true,
+  "info": {
+    "description": "Plugin allows to vizualize parameters of your flespi items",
+    "author": {
+      "name": "Flespi"
+    },
+    "keywords": ["datasource", "flespi"],
+    "logos": {
+      "small": "img/logo.svg",
+      "large": "img/logo.svg"
+    },
+    "links": [
+      {"name": "Project site", "url": "https://github.com/flespi-software/flespi-grafana-datasource"},
+      {"name": "MIT License", "url": "https://github.com/flespi-software/flespi-grafana-datasource/blob/main/LICENSE"}
+    ],
+    "screenshots": [
+      {"name": "Showcase", "path": "img/screenshot-showcase.png"},
+      {"name": "Query builder", "path": "img/screenshot-query-builder.png"}
+    ],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "dependencies": {
+    "grafanaDependency": ">=10.0.3",
+    "plugins": []
+  },
+  "routes": [
+    {
+      "path": "flespi",
+      "url": "https://flespi.io",
+      "headers": [
+        {
+          "name": "Authorization",
+          "content": "FlespiToken {{ .SecureJsonData.apiKey }}"
+        }
+      ]
+    }
+  ]
+}
